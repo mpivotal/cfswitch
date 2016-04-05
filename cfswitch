@@ -2,7 +2,7 @@
 ## ABOUT cfswitch ##
 # cfswitch enables quick account switching between different Cloud Foundry environments
 # Author: Mike long (@mpivotal)
-# Version: 0.0.1
+# Version: 0.0.2
 
 usage="Usage: cfswitch <CF ACCOUNT>"
 
