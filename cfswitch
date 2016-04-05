@@ -38,6 +38,7 @@ if [ `command -v cf` ] ; then # do we have the cf CLI installed?
     else
       echo $usage
       echo "It looks like you haven't logged in to a cf environment."
+      exit 1
     fi
   fi
 
