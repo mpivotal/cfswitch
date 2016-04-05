@@ -1,0 +1,53 @@
+#!/bin/bash
+## ABOUT cfswitch ##
+# cfswitch enables quick account switching between different Cloud Foundry environments
+# Author: Mike long (@mpivotal)
+# Version: 0.0.1
+
+usage="Usage: cfswitch <CF ACCOUNT>"
+
+if type cf > /dev/null ; then # do we have the cf CLI installed?
+
+  if [ $1 ]; then # did we provide the account option?
+
+    account=`tput bold`$1`tput sgr0` # set our account variable with fancy bold formatting
+
+    if [ `ls ~/.cf/config.json.$1 2> /dev/null` ]; then # does that account config exist?
+
+    
+        echo ""
+        echo "Switching to $account cf account..."
+        cp ~/.cf/config.json.$1 ~/.cf/config.json
+        cf target
+        exit 0
+
+    else # nope, that account config doesn't exist.
+      echo "Whoa there!"
+      echo "You have not created ~/.cf/config.json.$account"
+      echo "Login to your $account cf account and then run this command:"
+      echo "cp ~/.cf/config.json ~/.cf/config.json.$account"
+      exit 1
+    fi
+
+  else # nope, we did not provide the account option.
+    if [ -d ~/.cf/ ] ; then # list available options...
+      echo $usage
+      for f in `ls ~/.cf/ | grep config`
+      do
+        FILE=$f
+        echo "- ${FILE##*.}" | grep -v json
+      done
+      exit 1
+    else
+      echo $usage
+      echo "It looks like you haven't logged in to a cf environment."
+    fi
+  fi
+
+else # nope, the cf CLI isn't installed.
+  echo "Whoa there!"
+  echo "The `tput bold`cf`tput sgr0` CLI isn't installed!"
+  echo "Download the cf CLI https://github.com/cloudfoundry/cli/blob/master/README.md#downloads"
+  exit 1
+fi
+
