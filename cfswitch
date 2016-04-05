@@ -13,14 +13,11 @@ if [ `command -v cf` ] ; then # do we have the cf CLI installed?
     account=`tput bold`$1`tput sgr0` # set our account variable with fancy bold formatting
 
     if [ `ls ~/.cf/config.json.$1 2> /dev/null` ] ; then # does that account config exist?
-
-    
-        echo ""
-        echo "Switching to $account cf account..."
-        cp ~/.cf/config.json.$1 ~/.cf/config.json
-        cf target
-        exit 0
-
+      echo ""
+      echo "Switching to $account cf account..."
+      cp ~/.cf/config.json.$1 ~/.cf/config.json
+      cf target
+      exit 0
     else # nope, that account config doesn't exist.
       echo "Whoa there!"
       echo "You have not created ~/.cf/config.json.$account"
