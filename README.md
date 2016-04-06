@@ -16,6 +16,8 @@ Enables quick account switching between different Cloud Foundry environments.
 
 ```$ ln -s ~/workspace/cfswitch/cfswitch /usr/local/bin/cfswitch```
 
+```$ chmod +x /usr/local/bin/cfswitch```
+
 ```$ cfswitch default```
 
 Follow the instructions provided about how to create your initial account that ```cfswitch``` can help you quickly switch to.
