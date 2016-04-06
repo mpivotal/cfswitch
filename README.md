@@ -14,9 +14,7 @@ Enables quick account switching between different Cloud Foundry environments.
 
 ```$ git clone https://github.com/mpivotal/cfswitch.git```
 
-```$ ln -s ~/workspace/cfswitch/cfswitch ~/bin/cfswitch```
-
-```$ chmod +x ~/bin/cfswitch```
+```$ ln -s ~/workspace/cfswitch/cfswitch /usr/local/bin/cfswitch```
 
 ```$ cfswitch default```
 
