@@ -24,9 +24,13 @@ Follow the instructions provided about how to create your initial account that `
 
 ## Known Issues
 When a session expires, cfswitch breaks.
-Currently, the only way to fix the issue is to:
+Currently, the only way to fix the issue is to follow these steps:
 ```rm ~/.cf/config.json.<CF ACCOUNT>```
+
 ```cf login -a <CF API URL>```
+
 ```cf ~/.cf/config.json ~/.cf/config.json.<CF ACCOUNT>```
+
 ```cfswitch <CF ACCOUNT>```
+
 
