@@ -21,3 +21,12 @@ Enables quick account switching between different Cloud Foundry environments.
 ```cfswitch default```
 
 Follow the instructions provided about how to create your initial account that ```cfswitch``` can help you quickly switch to.
+
+## Known Issues
+When a session expires, cfswitch breaks.
+Currently, the only way to fix the issue is to:
+```rm ~/.cf/config.json.<CF ACCOUNT>```
+```cf login -a <CF API URL>```
+```cf ~/.cf/config.json ~/.cf/config.json.<CF ACCOUNT>```
+```cfswitch <CF ACCOUNT>```
+
